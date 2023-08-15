@@ -38,7 +38,7 @@ resource st 'Microsoft.Storage/storageAccounts@2022-09-01' = {
   }
   kind: 'StorageV2'
    properties: {
-     accessTier: 'Cool'
+     accessTier: 'Hot'
    }
   tags: resourceTags
 }

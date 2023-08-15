@@ -1,8 +1,8 @@
 
 targetScope = 'subscription'
 
-var projectName = 'hallostack'
-var orchestrationName = 'something'
+var projectName = 'yaystack'
+var orchestrationName = 'four'
 
 module modResourceGroup  'modules/rg.bicep' = { 
   name: take('${deployment().name}-${orchestrationName}-rg', 64)
@@ -12,11 +12,11 @@ module modResourceGroup  'modules/rg.bicep' = {
   dependsOn: []  
 }
 
-module modStorage  'modules/storage.bicep' = { 
-  name: take('${deployment().name}-${orchestrationName}-sto', 64)
+module modStorageAlpha  'modules/storage.bicep' = { 
+  name: take('${deployment().name}-${orchestrationName}-sto-alpha', 64)
   scope: resourceGroup(projectName)
   params:{
-    projectName: projectName
+    projectName: '${projectName}alpha'
   }
   dependsOn: [modResourceGroup]  
 }
