@@ -29,3 +29,12 @@ module modStorageBeta  'modules/storage.bicep' = {
   }
   dependsOn: [modResourceGroup]  
 }
+
+/* -----------
+   Outputs     
+   ----------- */
+   @description('The name of the first storage account.')
+   output alphaName string = modStorageAlpha.outputs.storageAccountName
+
+   @description('The name of the second storage account.')
+   output betaName string = modStorageBeta.outputs.storageAccountName

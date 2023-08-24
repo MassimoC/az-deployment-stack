@@ -14,7 +14,10 @@ Overview
 az login --tenant 7517bc42-bcf8-4916-a677
 az account set --subscription c1537527-c126-428d-8f72
 
-az deployment sub create --name "20230722.01" --template-file hellostack01.bicep --location westeurope
+az deployment sub create --name "20230722.01" --template-file yaystack01.bicep --location westeurope
+$deployment=az deployment sub create --name "20230722.01" --template-file yaystack01.bicep --location westeurope
+
+($deployment | ConvertFrom-Json).properties.outputs.alphaName.value
 
 ```
 
@@ -26,13 +29,15 @@ Some test on the lifecycle
 ### Init - one RG, two STO
 
 ```
-az stack sub create --name "yaystack" `
+$stack=az stack sub create --name "yaystack" `
   --template-file yaystack01.bicep --location westeurope `
   --deny-settings-mode "DenyDelete" `
   --delete-all false `
   --delete-resource-groups false `
   --delete-resources false
 
+
+($stack | ConvertFrom-Json).outputs.alphaName.value
 ```
 
 ![](imgs/yaystack01.jpg)
